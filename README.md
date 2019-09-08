@@ -16,8 +16,19 @@ In this project, I use a neural network to clone car driving behavior. It is a s
 
 ### Getting started
 Additionally you need to download and unpack the [![Udacity self-driving car simulator (Version 2)](https://github.com/udacity/self-driving-car-sim).   
-To run the code start the simulator in `autonomous mode`, open another shell and type
 
+### Run the pretrained model
+To run the code start the simulator in `autonomous mode`, Then, run the model as follows:  
+```sh
+python drive.py model.h5
+```
+
+### To train the model
+first make a directory ./data/, drive the car in training mode around the track and save the data to this directory.   
+Then, run the model as follows:
+```sh
+python model.py
+```
 
 
 
@@ -102,17 +113,6 @@ The fourth argument, `run1`, is the directory in which to save the images seen b
 
 ```sh
 ls run1
-
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_424.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_451.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_477.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_528.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_573.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_618.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_697.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_723.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_749.jpg
-[2017-01-09 16:10:23 EST]  12KiB 2017_01_09_21_10_23_817.jpg
 ...
 ```
 
