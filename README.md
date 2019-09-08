@@ -2,12 +2,21 @@
 
 In this project, I use a neural network to clone car driving behavior. It is a supervised regression problem between the car steering angles and the road images in front of a car.
 
-The goals / steps of this project are the following:
+### The goals / steps of this project are the following:
 - Build, a convolution neural network in Keras that predicts steering angles from images
 - Train and validate the model with a training and validation set
 - Test that the model successfully drives around track one without leaving the road
 - Summarize the results with a written report
 
+### Files included
+`model.py` : The script used to create and train the model  
+`drive.py` : The script to drive the car in autonomous mode  
+`model.h5` : The script to provide useful functionalities (i.e. image preprocessing and augumentation)  
+`writeup_report.md` : Summarize the results   
+
+### Getting started
+Additionally you need to download and unpack the [![Udacity self-driving car simulator (Version 2)](https://github.com/udacity/self-driving-car-sim).   
+To run the code start the simulator in `autonomous mode`, open another shell and type
 
 
 
