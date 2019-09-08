@@ -8,6 +8,8 @@ import math
 import sklearn
 from sklearn.model_selection import train_test_split
 from sklearn.utils import shuffle
+
+#Use following comand on jupyter notebook only
 #import matplotlib.pyplot as plt
 #import matplotlib.image as mpimg
 
@@ -20,6 +22,7 @@ with open('./data/driving_log.csv') as csvfile:
 print("The csv file has been loaded.")
 train_samples, validation_samples = train_test_split(lines, test_size=0.2)
 
+#steering angles correction of right & left camera
 correction = 0.2
 
 def generator(lines, batch_size=32):
@@ -31,7 +34,7 @@ def generator(lines, batch_size=32):
             augmented_images = []
             augmented_measurements = []
             for batch_sample in batch_samples:
-                    for i in range(3):
+                    for i in range(3): # i=0:centor i=1:right i=2:left
                         source_path = batch_sample[i]
                         filename = source_path.split('IMG')[-1]
                         current_path = './data/IMG' + filename
@@ -44,10 +47,10 @@ def generator(lines, batch_size=32):
                             measurement+= correction
                         elif i==2: #left camera image
                             measurement-= correction
-                        augmented_images.append(image) #centor , right , left images
-                        augmented_measurements.append(measurement) #centor , right , left steering angles
-                        augmented_images.append(cv2.flip(image,1)) # flip images of centor , right , left
-                        augmented_measurements.append(measurement* (-1)) #flip steering angles of centor , right , left
+                        augmented_images.append(image) 
+                        augmented_measurements.append(measurement) 
+                        augmented_images.append(cv2.flip(image,1)) # add flip image
+                        augmented_measurements.append(measurement* (-1)) #add flip steering angle
             # trim image to only see section with road
             X_train = np.array(augmented_images)
             y_train = np.array(augmented_measurements) 
