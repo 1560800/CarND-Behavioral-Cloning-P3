@@ -1,22 +1,19 @@
 # Behavioral Cloning Project
 
-In this project, I use a neural network to clone car driving behavior. It is a supervised regression problem between the car steering angles and the road images in front of a car.
-
+In this project, I use a neural network to clone car driving behavior. It is a supervised regression problem between the car steering angles and the road images in front of a car.  
+## Project Description
 ### The goals / steps of this project are the following:
 - Build, a convolution neural network in Keras that predicts steering angles from images
 - Train and validate the model with a training and validation set
 - Test that the model successfully drives around track one without leaving the road
-- Summarize the results with a written report
-
+- Summarize the results with a written report  
 ### Files included
 `model.py` : The script used to create and train the model  
 `drive.py` : The script to drive the car in autonomous mode  
 `model.h5` : The script to provide useful functionalities (i.e. image preprocessing and augumentation)  
 `writeup_report.md` : Summarize the results   
-
 ### Getting started
-Additionally you need to download and unpack the [![Udacity self-driving car simulator (Version 2)](https://github.com/udacity/self-driving-car-sim).   
-
+Additionally you need to download and unpack the [Udacity self-driving car simulator (Version 2)](https://github.com/udacity/self-driving-car-sim).    
 ### Run the pretrained model
 To run the code start the simulator in `autonomous mode`, Then, run the model as follows:  
 ```sh
@@ -29,46 +26,44 @@ Then, run the model as follows:
 ```sh
 python model.py
 ```
+## Model Architecture and Training Strategy
+### Model architecture
+I used the NVIDIA's CNN model introduced in the Udacity lesson.
+
+_________________________________________________________________
+|Layer (type)          |       Output Shape         |     Param    
+=================================================================
+|lambda_1 (Lambda)     |       (None, 45, 160, 3)   |     0         
+_________________________________________________________________
+|conv2d_1 (Conv2D)     |       (None, 21, 78, 64)   |     4864      
+_________________________________________________________________
+|conv2d_2 (Conv2D)     |       (None, 9, 37, 36)    |     57636     
+_________________________________________________________________
+|conv2d_3 (Conv2D)     |       (None, 3, 17, 48)    |     43248     
+_________________________________________________________________
+|conv2d_4 (Conv2D)     |       (None, 1, 15, 64)    |     27712     
+_________________________________________________________________
+|dropout_1 (Dropout)   |       (None, 1, 15, 64)    |     0         
+_________________________________________________________________
+|flatten_1 (Flatten)   |       (None, 960)          |     0         
+_________________________________________________________________
+|dense_1 (Dense)       |       (None, 100)          |     96100     
+_________________________________________________________________
+|dense_2 (Dense)       |       (None, 50)           |     5050      
+_________________________________________________________________
+|dense_3 (Dense)       |       (None, 10)           |     510       
+_________________________________________________________________
+|dense_4 (Dense)       |       (None, 1)            |     11        
+=================================================================
+Total params: 235,131
+Trainable params: 235,131
 
 
 
+### Data Preprocessing
 
-[![Udacity - Self-Driving Car NanoDegree](https://s3.amazonaws.com/udacity-sdc/github/shield-carnd.svg)](http://www.udacity.com/drive)
+First, read images and steering angles, which are the dataset provided from Udacity, from the csv file <model.py line:10-26>. Then converted the color space from BGR into RGB for drive.py, cropped top 55[pixel] and bottom 20[pixel] (i.e. 160x320x3 ---> 85x320x3), and resized to 68x204 (i.e. 85x320x3 ---> 68x204x3) in order to feed to the NVIDIA's CNN architecture <model.py line:27-33>.
 
-Overview
----
-This repository contains starting files for the Behavioral Cloning Project.
-
-In this project, you will use what you've learned about deep neural networks and convolutional neural networks to clone driving behavior. You will train, validate and test a model using Keras. The model will output a steering angle to an autonomous vehicle.
-
-We have provided a simulator where you can steer a car around a track for data collection. You'll use image data and steering angles to train a neural network and then use this model to drive the car autonomously around the track.
-
-We also want you to create a detailed writeup of the project. Check out the [writeup template](https://github.com/udacity/CarND-Behavioral-Cloning-P3/blob/master/writeup_template.md) for this project and use it as a starting point for creating your own writeup. The writeup can be either a markdown file or a pdf document.
-
-To meet specifications, the project will require submitting five files: 
-* model.py (script used to create and train the model)
-* drive.py (script to drive the car - feel free to modify this file)
-* model.h5 (a trained Keras model)
-* a report writeup file (either markdown or pdf)
-* video.mp4 (a video recording of your vehicle driving autonomously around the track for at least one full lap)
-
-This README file describes how to output the video in the "Details About Files In This Directory" section.
-
-Creating a Great Writeup
----
-A great writeup should include the [rubric points](https://review.udacity.com/#!/rubrics/432/view) as well as your description of how you addressed each point.  You should include a detailed description of the code used (with line-number references and code snippets where necessary), and links to other supporting documents or external references.  You should include images in your writeup to demonstrate how your code works with examples.  
-
-All that said, please be concise!  We're not looking for you to write a book here, just a brief description of how you passed each rubric point, and references to the relevant code :). 
-
-You're not required to use markdown for your writeup.  If you use another method please just submit a pdf of your writeup.
-
-The Project
----
-The goals / steps of this project are the following:
-* Use the simulator to collect data of good driving behavior 
-* Design, train and validate a model that predicts a steering angle from image data
-* Use the model to drive the vehicle autonomously around the first track in the simulator. The vehicle should remain on the road for an entire loop around the track.
-* Summarize the results with a written report
 
 ### Dependencies
 This lab requires:
