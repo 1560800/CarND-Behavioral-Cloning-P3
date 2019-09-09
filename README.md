@@ -28,8 +28,8 @@ python model.py
 ```
 ## Model Architecture and Training Strategy
 ### Model architecture
-I used the NVIDIA's CNN model introduced in the Udacity lesson.  
- 
+I used the NVIDIA's CNN model introduced in the Udacity lesson.   
+ <img src="./examples/nvidia_cnn.png">  
  
 |Layer (type)          |       Output Shape         |     Param     |  
 |----------------------|:--------------------------:|:-------------:|  
@@ -46,13 +46,32 @@ I used the NVIDIA's CNN model introduced in the Udacity lesson.
 |dense_3 (Dense)       |       (None, 10)           |     510       |
 |dense_4 (Dense)       |       (None, 1)            |     11        | 
 
-Total params: 252,219
-Trainable params: 252,219
-Non-trainable params: 0
+Total params: 252,219 / Trainable params: 252,219
 
 ### Data Preprocessing  
-First, read images and steering angles, which are the dataset provided from Udacity, from the csv file.
-Then converted the color space from BGR into RGB for drive.py, cropped top 50[pixel] and bottom 20[pixel] (160x320x3 => 90x320x3), and resized to 68x204 (90x320x3 => 68x204x3) in order to feed to the NVIDIA's CNN architecture.
+First, read images and steering angles, which are the dataset provided from Udacity, from the csv file.  
+1. Then converted the color space from BGR into RGB for drive.py, cropped top 50[pixel] and bottom 20[pixel] (160x320x3 => 90x320x3)
+2. And resized to 68x204 (90x320x3 => 68x204x3) in order to feed to the NVIDIA's CNN architecture.
 
+### Model Training
+I used the following augumentation for training.
+- For left image, steering angle is adjusted by +0.2
+- For right image, steering angle is adjusted by -0.2
+- Addition fliped image left/right
 
+### Training, Validation and Test
+<img src="./examples/run5_e30.png"><br/>
+I used Adam optimizer for optimization with learning rate of 1.0e-4 because default rate = 1.0e-3 is too big.
+I confirmed the operation of epochs from 3 to 30, but none of them was a problem, but this time we uploaded epoch 30 data.
+
+### For your information
+The training data was manipulated with the following 2 points.
+1. Smooth steering　/ Swivel turn speed
+<img src="./examples/curve.png"><br/>
+
+2. Driving where the steering angle is leveled
+(Eliminate sudden steering and maximize steering angle 0)
+<img src="./examples/clone_hist.png"><br/>
+
+As a result, the run was successful with only one round of learning data.　
 
