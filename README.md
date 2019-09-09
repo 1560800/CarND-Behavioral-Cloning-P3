@@ -31,26 +31,28 @@ python model.py
 I used the NVIDIA's CNN model introduced in the Udacity lesson.  
  
  
-|Layer (type)          |       Output Shape         |     Param    |  
+|Layer (type)          |       Output Shape         |     Param     |  
 |----------------------|:--------------------------:|:-------------:|  
-|lambda_1 (Lambda)     |       (None, 45, 160, 3)   |     0        |   
-|conv2d_1 (Conv2D)     |       (None, 21, 78, 64)   |     4864     |  
-|conv2d_2 (Conv2D)     |       (None, 9, 37, 36)    |     57636    | 
-|conv2d_3 (Conv2D)     |       (None, 3, 17, 48)    |     43248    | 
-|conv2d_4 (Conv2D)     |       (None, 1, 15, 64)    |     27712    | 
-|dropout_1 (Dropout)   |       (None, 1, 15, 64)    |     0        | 
-|flatten_1 (Flatten)   |       (None, 960)          |     0        | 
-|dense_1 (Dense)       |       (None, 100)          |     96100    | 
-|dense_2 (Dense)       |       (None, 50)           |     5050     | 
-|dense_3 (Dense)       |       (None, 10)           |     510      | 
-|dense_4 (Dense)       |       (None, 1)            |     11       | 
+|lambda_1 (Lambda)     |       (None, 68, 204, 3)   |     0         |  
+|conv2d_1 (Conv2D)     |       (None, 32, 100, 24)  |     1824      |
+|conv2d_2 (Conv2D)     |       (None, 14, 48, 36)   |     21636     | 
+|conv2d_3 (Conv2D)     |       (None, 5, 22, 48)    |     43248     |
+|conv2d_4 (Conv2D)     |       (None, 3, 20, 64)    |     27712     |
+|conv2d_5 (Conv2D)     |       (None, 1, 18, 64)    |     36928     |
+|dropout_1 (Dropout)   |       (None, 1, 18, 64)    |     0         |
+|flatten_1 (Flatten)   |       (None, 1152)         |     0         |
+|dense_1 (Dense)       |       (None, 100)          |     115300    |    
+|dense_2 (Dense)       |       (None, 50)           |     5050      |   
+|dense_3 (Dense)       |       (None, 10)           |     510       |
+|dense_4 (Dense)       |       (None, 1)            |     11        | 
 
-Total params: 235,131
-Trainable params: 235,131
+Total params: 252,219
+Trainable params: 252,219
+Non-trainable params: 0
 
 ### Data Preprocessing  
 First, read images and steering angles, which are the dataset provided from Udacity, from the csv file.
-Then converted the color space from BGR into RGB for drive.py, cropped top 50[pixel] and bottom 20[pixel] (i.e. 160x320x3 ---> 90x320x3), and resized to 45x160 (i.e. 90x320x3 ---> 45x160x3) in order to feed to the NVIDIA's CNN architecture.
+Then converted the color space from BGR into RGB for drive.py, cropped top 50[pixel] and bottom 20[pixel] (160x320x3 => 90x320x3), and resized to 68x204 (90x320x3 => 68x204x3) in order to feed to the NVIDIA's CNN architecture.
 
 
 
