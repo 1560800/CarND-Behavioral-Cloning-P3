@@ -68,9 +68,9 @@ I confirmed the operation of epochs from 3 to 30, but none of them was a problem
 The training data was manipulated with the following 2 points.  
 As a result, the run was successful with only one round of learning data.　
 
-#### 1. Smooth steering　/ Swivel turn speed
+1. Smooth steering　/ Swivel turn speed
 <img src="./examples/curve.png"><br/>
 
-#### 2. Driving where the steering angle is leveled
-(Eliminate sudden steering and maximize steering angle 0)
+2. Driving where the steering angle is leveled
+(Eliminate sudden steering and maximize steering angle 0)  
 <img src="./examples/clone_hist.png"><br/>
