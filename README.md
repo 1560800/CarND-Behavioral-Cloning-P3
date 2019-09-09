@@ -65,7 +65,9 @@ I used Adam optimizer for optimization with learning rate of 1.0e-4 because defa
 I confirmed the operation of epochs from 3 to 30, but none of them was a problem, but this time we uploaded epoch 30 data.
 
 ### For your information
-The training data was manipulated with the following 2 points.
+The training data was manipulated with the following 2 points.  
+As a result, the run was successful with only one round of learning data.  
+
 1. Smooth steering　/ Swivel turn speed
 <img src="./examples/curve.png"><br/>
 
@@ -73,5 +75,5 @@ The training data was manipulated with the following 2 points.
 (Eliminate sudden steering and maximize steering angle 0)
 <img src="./examples/clone_hist.png"><br/>
 
-As a result, the run was successful with only one round of learning data.　
+
 
