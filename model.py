@@ -23,25 +23,28 @@ print("The csv file has been loaded.")
 train_samples, validation_samples = train_test_split(lines, test_size=0.2)
 
 
-correction = 0.2
+correction = 0.2 # steering angle correctin for right & left camera
 num_lines = len(lines)
-def generator(lines, batch_size=32):
+
+def generator(lines, batch_size=32): #batch generator
     num_lines = len(lines)
     while 1: # Loop forever so the generator never terminates
         random.shuffle(lines)
+        
         for offset in range(0, num_lines, batch_size):
             batch_samples = lines[offset:offset+batch_size]
             augmented_images = []
             augmented_measurements = []
+            
             for batch_sample in batch_samples:
-                    for i in range(3):
+                    for i in range(3): #i=0 centor, i=1 right i=2 left camera images
                         source_path = batch_sample[i]
                         filename = source_path.split('IMG')[-1]
                         current_path = './data/IMG' + filename
                         image = cv2.imread(current_path)
                         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-                        image = image[50:140,:,:] # 90*320*3
-                        image = cv2.resize(image, (204,68))# 66*204*3
+                        image = image[50:140,:,:] # Cut the upper and bottom area. image trimed 90*320*3
+                        image = cv2.resize(image, (204,68)) # image resize to 68*204*3
                         measurement = float(batch_sample[3])
                         if i==1:
                             measurement+= correction
@@ -49,8 +52,8 @@ def generator(lines, batch_size=32):
                             measurement-= correction
                         augmented_images.append(image)
                         augmented_measurements.append(measurement)
-                        augmented_images.append(cv2.flip(image,1))
-                        augmented_measurements.append(measurement* -1.0)
+                        augmented_images.append(cv2.flip(image,1)) # Addition the flipped image
+                        augmented_measurements.append(measurement* -1.0) # Addition the flipped steering angle
             # trim image to only see section with road
             X_train = np.array(augmented_images)
             y_train = np.array(augmented_measurements) 
@@ -96,6 +99,8 @@ print(history_object.history.keys())
 ### plot the training and validation loss for each epoch
 model.save('model5_30.h5')
 print('model has saved')
+
+#plot the graph for training rate and valiation rate
 plt.plot(history_object.history['loss'])
 plt.plot(history_object.history['val_loss'])
 plt.title('model mean squared error loss')
@@ -103,6 +108,4 @@ plt.ylabel('mean squared error loss')
 plt.xlabel('epoch')
 plt.legend(['training set', 'validation set'], loc='upper right')
 plt.show()
-
-
 
