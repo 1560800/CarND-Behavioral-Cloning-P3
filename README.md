@@ -2,7 +2,7 @@
 
 |Autonomous driving|Autonomous driving|Autonomous driving|Manual operation|
 |:--------:|:--------:|:------------:|:------------:|
-|Lake Track|Lake Track[reverse]|Jungle Track|Lake Track|
+|Lake Track|Lake Track(Reverse)|Jungle Track|Lake Track (training data for deep learning)|
 |[![LakeTrack](examples/lake.png)](https://youtu.be/LtLwOluTLsU)|[![LakeTrack(Reverse)](examples/lake_r.png)](https://youtu.be/0FS8mlMxdaE)|[![JungleTrack](examples/jungle.png)](https://youtu.be/j9Qjt5cCKHw)|[![LakeTrack(training)](examples/train.png)](https://youtu.be/AQOjGxCRZ2Q)|
 |[YouTube Link](https://youtu.be/LtLwOluTLsU)|[YouTube Link](https://youtu.be/0FS8mlMxdaE)|[YouTube Link](https://youtu.be/j9Qjt5cCKHw)|[YouTube Link](https://youtu.be/AQOjGxCRZ2Q)|
 
