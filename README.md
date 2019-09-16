@@ -1,9 +1,10 @@
 # Behavioral Cloning Project
 
-|Lake Track|Lake Track[reverse]|Jungle Track|
-|:--------:|:--------:|:------------:|
-|[![Lake Track](examples/lake.png)](https://youtu.be/LtLwOluTLsU)|[![Lake Track[reverse]](examples/lake_r.png)](https://youtu.be/0FS8mlMxdaE)|[![Jungle Track](examples/jungle.png)](https://youtu.be/j9Qjt5cCKHw)|
-|[YouTube Link](https://youtu.be/LtLwOluTLsU)|[YouTube Link](https://youtu.be/0FS8mlMxdaE)|[YouTube Link](https://youtu.be/j9Qjt5cCKHw)|
+|Autonomous driving|Autonomous driving|Autonomous driving|Manual operation|
+|:--------:|:--------:|:------------:|:------------:|
+|Lake Track|Lake Track[reverse]|Jungle Track|Lake Track|
+|[![LakeTrack](examples/lake.png)](https://youtu.be/LtLwOluTLsU)|[![LakeTrack(Reverse)](examples/lake_r.png)](https://youtu.be/0FS8mlMxdaE)|[![JungleTrack](examples/jungle.png)](https://youtu.be/j9Qjt5cCKHw)|[![LakeTrack(training)](examples/train.png)](https://youtu.be/AQOjGxCRZ2Q)|
+|[YouTube Link](https://youtu.be/LtLwOluTLsU)|[YouTube Link](https://youtu.be/0FS8mlMxdaE)|[YouTube Link](https://youtu.be/j9Qjt5cCKHw)|[YouTube Link](https://youtu.be/AQOjGxCRZ2Q)|
 
 In this project, I use a neural network to clone car driving behavior. It is a supervised regression problem between the car steering angles and the road images in front of a car.  
 ## Project Description
